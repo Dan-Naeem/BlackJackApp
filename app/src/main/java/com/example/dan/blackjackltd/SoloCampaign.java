@@ -37,6 +37,9 @@ public class SoloCampaign extends Activity {
     int dealerTotal, dealerAce;
     String dealerHand, dealerHidden, faceDown;
 
+    //state: control state of the program
+    String prgrmState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +76,8 @@ public class SoloCampaign extends Activity {
         dealerHidden = "";
         faceDown = "?? ";
 
+        //set up state of the program
+        prgrmState = "next";
 
 
         Button myButton = new Button(this);
