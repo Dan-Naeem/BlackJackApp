@@ -40,6 +40,10 @@ public class SoloCampaign extends Activity {
     //state: control state of the program
     String prgrmState;
 
+    //predefined states
+    final static String stateNext = "press next";
+    final static String stateHitStay = "press hit or stay";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
