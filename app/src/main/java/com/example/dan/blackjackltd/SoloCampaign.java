@@ -109,89 +109,96 @@ public class SoloCampaign extends Activity {
     }
 
     public void onPressNext(){
-        //increment pressNext
-        pressNext += 1;
+        //if state is in next
+        if (prgrmState == "next") {
 
-        if ( pressNext == 1){
-            info.setText("Setting Up Deck");
-            next.setText("Next");
+            //increment pressNext
+            pressNext += 1;
 
-            dealerHandTxt.setText("---");
-            playerHandTxt.setText("---");
+            if (pressNext == 1) {
+                info.setText("Setting Up Deck");
+                next.setText("Next");
 
-            //set up deck
-            deck = new int[52];
-            for (int i = 0; i < 52; i++){
-                deck[i] = 0;
+                dealerHandTxt.setText("---");
+                playerHandTxt.setText("---");
+
+                //set up deck
+                deck = new int[52];
+                for (int i = 0; i < 52; i++) {
+                    deck[i] = 0;
+                }
+            }
+
+            else if (pressNext == 2) {
+                info.setText("Dealer has Dealed");
+
+                //deal 2 cards to the player
+                for (int i = 0; i < 2; i++) {
+                    String cardFace = "";
+                    int cardValue = 0;
+
+                    Pair<String, Integer> aCard = drawCard();
+                    cardFace = aCard.first;
+                    cardValue = aCard.second;
+
+                    //if an ace was drawn
+                    if (cardFace.substring(0, 1) == "A") {
+                        //add to ace count
+                        playerAce += 1;
+                    }
+
+                    //add to player hand
+                    playerHand += cardFace + " ";
+                    //add to player total
+                    playerTotal += cardValue;
+                }//end player for
+
+                //deal 2 cards to the dealer
+                for (int i = 0; i < 2; i++) {
+                    String cardFace = "";
+                    int cardValue = 0;
+
+                    Pair<String, Integer> aCard = drawCard();
+                    cardFace = aCard.first;
+                    cardValue = aCard.second;
+
+                    //if an ace was drawn
+                    if (cardFace.substring(0, 1) == "A") {
+                        //add to ace count
+                        dealerAce += 1;
+                    }
+
+                    //hide first card
+                    if (i == 0) {
+                        //add to dealer hidden
+                        dealerHidden = cardFace;
+                    }
+                    //show second
+                    else {
+                        //add to dealer hand
+                        dealerHand += cardFace + " ";
+                    }
+
+                    //add to dealer total
+                    dealerTotal += cardValue;
+                }//end dealer for
+
+
+                //update values
+                dealerHandTxt.setText(faceDown + dealerHand);
+                playerHandTxt.setText(playerHand);
+
+                //check for player 21
+
+                //check 2 aces drawn
+
+                //change state to hit_stay
+                prgrmState = "hit_stay";
+
             }
         }
 
-        else if ( pressNext == 2){
-            info.setText("Dealer has Dealed");
-
-            //deal 2 cards to the player
-            for (int i = 0; i < 2; i++){
-                String cardFace = "";
-                int cardValue = 0;
-
-                Pair<String, Integer> aCard = drawCard();
-                cardFace = aCard.first;
-                cardValue = aCard.second;
-
-                //if an ace was drawn
-                if (cardFace.substring(0,1) == "A"){
-                    //add to ace count
-                    playerAce += 1;
-                }
-
-                //add to player hand
-                playerHand += cardFace + " ";
-                //add to player total
-                playerTotal += cardValue;
-            }//end player for
-
-            //deal 2 cards to the dealer
-            for (int i = 0; i < 2; i++){
-                String cardFace = "";
-                int cardValue = 0;
-
-                Pair<String, Integer> aCard = drawCard();
-                cardFace = aCard.first;
-                cardValue = aCard.second;
-
-                //if an ace was drawn
-                if (cardFace.substring(0,1) == "A"){
-                    //add to ace count
-                    dealerAce += 1;
-                }
-
-                //hide first card
-                if (i == 0){
-                    //add to dealer hidden
-                    dealerHidden = cardFace;
-                }
-                //show second
-                else{
-                    //add to dealer hand
-                    dealerHand += cardFace + " ";
-                }
-
-                //add to dealer total
-                dealerTotal += cardValue;
-            }//end dealer for
-
-
-            //update values
-            dealerHandTxt.setText(faceDown + dealerHand);
-            playerHandTxt.setText(playerHand);
-
-            //check for player 21
-
-            //check 2 aces drawn
-
-        }
-
-        else {
+        else if (prgrmState == "hit_stay") {
             info.setText("choose hit or stay");
         }
 
