@@ -81,7 +81,7 @@ public class SoloCampaign extends Activity {
         faceDown = "?? ";
 
         //set up state of the program
-        prgrmState = "next";
+        prgrmState = stateNext;
 
 
         Button myButton = new Button(this);
@@ -114,7 +114,7 @@ public class SoloCampaign extends Activity {
 
     public void onPressNext(){
         //if state is in next
-        if (prgrmState == "next") {
+        if (prgrmState == stateNext) {
 
             //increment pressNext
             pressNext += 1;
@@ -197,13 +197,14 @@ public class SoloCampaign extends Activity {
                 //check 2 aces drawn
 
                 //change state to hit_stay
-                prgrmState = "hit_stay";
+                prgrmState = stateHitStay;
 
             }
         }
 
-        else if (prgrmState == "hit_stay") {
-            info.setText("choose hit or stay");
+        //if state is in hit stay
+        else if (prgrmState == stateHitStay) {
+            info.setText(stateHitStay);
         }
 
 
