@@ -144,8 +144,8 @@ public class SoloCampaign extends Activity {
     }//end onCreate
 
     public void onPressNext(){
-        //if game is active
-        if (gameStatus == inPrg) {
+        //if game has not ended
+        if (prgrmState != stateEnded) {
             //if state is in next
             if (prgrmState == stateNext) {
                 //increment pressNext
@@ -250,11 +250,14 @@ public class SoloCampaign extends Activity {
             else if (prgrmState == stateHitStay) {
                 info.setText(stateHitStay);
             }//end if state: HitStay
-        }//end if game active
+        }//end if game has not ended
 
         //else if state ended
         else if (prgrmState == stateEnded) {
             //at the end of the game, compare total value (player - dealer)
+
+            info.setText("Game Over");
+            next.setText("Game Over");
         }
     }//end onPressNext()
 
