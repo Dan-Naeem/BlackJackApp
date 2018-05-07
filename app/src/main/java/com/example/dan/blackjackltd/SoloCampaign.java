@@ -84,8 +84,9 @@ public class SoloCampaign extends Activity {
         dealerHidden = "";
         faceDown = "?? ";
 
-        //set up state of the program
+        //set up state of the program and game status
         prgrmState = stateNext;
+        gameStatus = inPrg;
 
 
 
@@ -228,14 +229,17 @@ public class SoloCampaign extends Activity {
     public void onPressHit() {
         // if game inPrg
         if (gameStatus == inPrg) {
+
             //if state is in next
             if (prgrmState == stateNext) {
 
                 info.setText(stateNext);
             }
+
+            //else if state Hit/Stay
             else if (prgrmState == stateHitStay) {
 
-                info.setText("Hit was pressed");
+                //Hit
             }
         }
 
