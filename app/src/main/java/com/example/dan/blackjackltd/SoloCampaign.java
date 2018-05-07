@@ -115,6 +115,15 @@ public class SoloCampaign extends Activity {
 
              }//end onClick
         });//end listener
+
+        hit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                //call pressNext method
+                onPressHit();
+
+            }//end onClick
+        });//end listener
     }
 
     public void onPressNext(){
@@ -214,6 +223,10 @@ public class SoloCampaign extends Activity {
 
 
 
+    }
+
+    public void onPressHit() {
+        info.setText("Hit was pressed");
     }
 
     public Pair<String, Integer> drawCard() {
