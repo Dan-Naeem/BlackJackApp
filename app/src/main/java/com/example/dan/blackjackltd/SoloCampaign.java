@@ -226,7 +226,23 @@ public class SoloCampaign extends Activity {
     }
 
     public void onPressHit() {
-        info.setText("Hit was pressed");
+        // if game inPrg
+        if (gameStatus == inPrg) {
+            //if state is in next
+            if (prgrmState == stateNext) {
+
+                info.setText(stateNext);
+            }
+            else if (prgrmState == stateHitStay) {
+
+                info.setText("Hit was pressed");
+            }
+        }
+
+        //else if game had ended
+        else {
+            info.setText("Game Has Ended");
+        }
     }
 
     public Pair<String, Integer> drawCard() {
