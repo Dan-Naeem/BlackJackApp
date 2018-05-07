@@ -307,7 +307,20 @@ public class SoloCampaign extends Activity {
     public void onPressStay() {
         // if game inPrg
         if (gameStatus == inPrg) {
-            info.setText("You chose stay");
+
+            if (prgrmState == stateNext){
+
+                info.setText(stateNext);
+            }
+
+            else if (prgrmState == stateHitStay) {
+
+                info.setText("You chose stay");
+
+                //change prgrm state to next
+                prgrmState = stateNext;
+            }
+
         }
 
         //else if game had ended
