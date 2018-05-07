@@ -126,6 +126,15 @@ public class SoloCampaign extends Activity {
 
             }//end onClick
         });//end listener
+
+        stay.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                //call pressNext method
+                onPressStay();
+
+            }//end onClick
+        });//end listener
     }
 
     public void onPressNext(){
@@ -293,6 +302,19 @@ public class SoloCampaign extends Activity {
         else {
             info.setText(stateEnded);
         }
+    }
+
+    public void onPressStay() {
+        // if game inPrg
+        if (gameStatus == inPrg) {
+            info.setText("You chose stay");
+        }
+
+        //else if game had ended
+        else {
+            info.setText(stateEnded);
+        }
+
     }
 
     public Pair<String, Integer> drawCard() {
