@@ -209,7 +209,7 @@ public class SoloCampaign extends Activity {
                         //hide first card
                         if (i == 0) {
                             //add to dealer hidden
-                            dealerHidden = cardFace;
+                            dealerHidden = cardFace + " ";
                         }
                         //show second
                         else {
@@ -279,9 +279,15 @@ public class SoloCampaign extends Activity {
 
         //else if state ended
         else if (prgrmState == stateEnded) {
-            //at the end of the game, compare total value (player - dealer)
+            //if player has not already won
+            if (gameStatus != Win){
+                //compare values, declare ruling
+            }
 
-            info.setText("Game Over");
+            //show the dealers hand
+            dealerHandTxt.setText(dealerHidden + dealerHand);
+
+            info.setText("Game Over");  //will be replaced with results
             next.setText("Game Over");
         }
     }//end onPressNext()
