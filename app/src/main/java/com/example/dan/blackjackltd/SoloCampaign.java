@@ -275,6 +275,7 @@ public class SoloCampaign extends Activity {
                         //Game Over, you lose
                         prgrmState = stateEnded;
                         gameStatus = Lose;
+                        info.setText(Lose);
                     }
                 }//end if >21
 
@@ -283,6 +284,7 @@ public class SoloCampaign extends Activity {
                     //Game Over, you won
                     prgrmState = stateEnded;
                     gameStatus = Win;
+                    info.setText(Win);
                 }
             }
         }
