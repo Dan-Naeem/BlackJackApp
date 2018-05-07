@@ -43,6 +43,7 @@ public class SoloCampaign extends Activity {
     //predefined states and statuses
     final static String stateNext = "press next";
     final static String stateHitStay = "press hit or stay";
+    final static String stateEnded = "Game Has Ended";
     final static String inPrg = "In Progress";
     final static String Win = "You Won";
     final static String Lose = "You Lost";
@@ -261,12 +262,34 @@ public class SoloCampaign extends Activity {
 
                 //display player hand
                 playerHandTxt.setText(playerHand);
+
+                //if player over 21
+                if (playerTotal > 21){
+
+                    //check for an ace
+                    if (playerAce > 0){
+                        info.setText("PLayer Has an Ace");
+                    }
+                    //else if >21 and no ace
+                    else {
+                        //Game Over, you lose
+                        prgrmState = stateEnded;
+                        gameStatus = Lose;
+                    }
+                }//end if >21
+
+                //check if player == 21
+                else if (playerTotal == 21){
+                    //Game Over, you won
+                    prgrmState = stateEnded;
+                    gameStatus = Win;
+                }
             }
         }
 
         //else if game had ended
         else {
-            info.setText("Game Has Ended");
+            info.setText(stateEnded);
         }
     }
 
@@ -349,26 +372,3 @@ public class SoloCampaign extends Activity {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
