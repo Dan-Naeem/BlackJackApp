@@ -239,7 +239,28 @@ public class SoloCampaign extends Activity {
             //else if state Hit/Stay
             else if (prgrmState == stateHitStay) {
 
-                //Hit
+                //Hit, deal a card to the player
+                String cardFace = "";
+                int cardValue = 0;
+
+                //draw a card
+                Pair<String, Integer> aCard = drawCard();
+                cardFace = aCard.first;
+                cardValue = aCard.second;
+
+                //if an ace was drawn
+                if (cardFace.substring(0, 1) == "A"){
+                    //add to ace count
+                    playerAce += 1;
+                }
+
+                //add to player hand
+                playerHand += cardFace + " ";
+                //add to player total
+                playerTotal += cardValue;
+
+                //display player hand
+                playerHandTxt.setText(playerHand);
             }
         }
 
