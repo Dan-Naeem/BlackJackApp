@@ -262,8 +262,8 @@ public class SoloCampaign extends Activity {
     }//end onPressNext()
 
     public void onPressHit() {
-        // if game inPrg
-        if (gameStatus == inPrg) {
+        // if game has not ended
+        if (prgrmState != stateEnded) {
 
             //if state is in next
             if (prgrmState == stateNext) {
@@ -330,8 +330,8 @@ public class SoloCampaign extends Activity {
     }
 
     public void onPressStay() {
-        // if game inPrg
-        if (gameStatus == inPrg) {
+        // if game has not ended
+        if (prgrmState != stateEnded) {
 
             if (prgrmState == stateNext){
 
@@ -345,7 +345,6 @@ public class SoloCampaign extends Activity {
                 //change prgrm state to next
                 prgrmState = stateNext;
             }
-
         }
 
         //else if game had ended
