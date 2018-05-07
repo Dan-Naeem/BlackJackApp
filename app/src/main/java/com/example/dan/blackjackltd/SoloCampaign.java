@@ -37,12 +37,16 @@ public class SoloCampaign extends Activity {
     int dealerTotal, dealerAce;
     String dealerHand, dealerHidden, faceDown;
 
-    //state: control state of the program
-    String prgrmState;
+    //state: control state of the program and status of game
+    String prgrmState, gameStatus;
 
-    //predefined states
+    //predefined states and statuses
     final static String stateNext = "press next";
     final static String stateHitStay = "press hit or stay";
+    final static String inPrg = "In Progress";
+    final static String Win = "You Won";
+    final static String Lose = "You Lost";
+    final static String Draw = "Draw";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +86,7 @@ public class SoloCampaign extends Activity {
 
         //set up state of the program
         prgrmState = stateNext;
+
 
 
         Button myButton = new Button(this);
@@ -157,7 +162,7 @@ public class SoloCampaign extends Activity {
                     playerTotal += cardValue;
                 }//end player for
 
-                //deal 2 cards to the dealer
+                //deal 2 cards to the dealer, one face down and one face up
                 for (int i = 0; i < 2; i++) {
                     String cardFace = "";
                     int cardValue = 0;
