@@ -239,6 +239,31 @@ public class SoloCampaign extends Activity {
                 else if (pressNext == 3) {
                     //dealer hit while < 17
                     info.setText("Dealer's Turn");
+                    while (dealerTotal < 17){
+                        String cardFace = "";
+                        int cardValue = 0;
+
+                        //draw a card
+                        Pair<String, Integer> aCard = drawCard();
+                        cardFace = aCard.first;
+                        cardValue = aCard.second;
+
+                        //if an ace was drawn
+                        if (cardFace.substring(0, 1) == "A"){
+                            //add to ace count
+                            dealerAce += 1;
+                        }
+
+                        //add to dealer hand and value
+                        dealerHand += cardFace + "";
+                        dealerTotal += cardValue;
+
+                        //if the dealer busts and has an ace
+                            //lower ace to 1
+                    }
+
+                    //show dealer's hand
+                    dealerHandTxt.setText(faceDown + dealerHand);
 
                     //after the dealer stops, go to end game
                     prgrmState = stateEnded;
