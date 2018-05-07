@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/txtDealerHand"
         android:layout_width="170dp"
-        android:layout_height="50dp"
+        android:layout_height="90dp"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/txtPlayerHand"
@@ -21,7 +21,7 @@
     <TextView
         android:id="@+id/txtPlayerHand"
         android:layout_width="170dp"
-        android:layout_height="50dp"
+        android:layout_height="90dp"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/btnSoloStay"
@@ -45,7 +45,7 @@
     <TextView
         android:id="@+id/txtPlayer"
         android:layout_width="146dp"
-        android:layout_height="50dp"
+        android:layout_height="90dp"
         android:text="@string/player"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -58,7 +58,7 @@
     <TextView
         android:id="@+id/txtDealer"
         android:layout_width="146dp"
-        android:layout_height="50dp"
+        android:layout_height="90dp"
         android:text="@string/dealer"
         android:textAlignment="center"
         android:textSize="30sp"
