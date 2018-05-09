@@ -226,7 +226,10 @@ public class SoloCampaign extends Activity {
                     dealerHandTxt.setText(faceDown + dealerHand);
                     playerHandTxt.setText(playerHand);
 
-                    //check for player 21
+                    //check for player == 21
+                    if (playerTotal == 21){
+                        youWon();
+                    }
 
                     //check 2 aces drawn
 
@@ -456,6 +459,12 @@ public class SoloCampaign extends Activity {
 
         return card_Face_Val;
     };
+
+    public void youWon() {
+        prgrmState = stateEnded;
+        gameStatus = Win;
+        info.setText(Win);
+    }
 
     public void me() {
         info.setText("pressNext = " + pressNext);
