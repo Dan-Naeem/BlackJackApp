@@ -383,8 +383,11 @@ public class SoloCampaign extends Activity {
 
                 info.setText("You chose stay");
 
-                //change prgrm state to next
+                //change state to next
                 prgrmState = stateNext;
+
+                //change text
+                next.setText("Next");
             }
         }
 
