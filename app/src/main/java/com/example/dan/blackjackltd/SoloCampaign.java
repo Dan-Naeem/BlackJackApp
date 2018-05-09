@@ -239,7 +239,7 @@ public class SoloCampaign extends Activity {
                 }
 
                 // ** 2 after player hits stay and is still in the game, allow dealer to play
-                else if (pressNext == 3) {
+                else if (pressNext == 2) {
                     //dealer hit while < 17
                     info.setText("Dealer's Turn");
                     while (dealerTotal < 17){
