@@ -466,6 +466,18 @@ public class SoloCampaign extends Activity {
         info.setText(Win);
     }
 
+    public void youLost() {
+        prgrmState = stateEnded;
+        gameStatus = Lose;
+        info.setText(Lose);
+    }
+
+    public void gameDraw() {
+        prgrmState = stateEnded;
+        gameStatus = Draw;
+        info.setText(Draw);
+    }
+
     public void me() {
         info.setText("pressNext = " + pressNext);
     }
