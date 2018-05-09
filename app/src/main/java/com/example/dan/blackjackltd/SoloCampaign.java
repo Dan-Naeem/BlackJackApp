@@ -282,16 +282,27 @@ public class SoloCampaign extends Activity {
 
         //else if state ended
         else if (prgrmState == stateEnded) {
-            //if player has not already won
-            if (gameStatus != Win){
+
+            //if the results aren't in yet
+            if (gameStatus == inPrg){
                 //compare values, declare ruling
+                if (dealerTotal > 21){
+                    youWon();
+                }
+                else if (dealerTotal > playerTotal){
+                    youLost();
+                }
+                else if (dealerTotal == playerTotal){
+                    gameDraw();
+                }
+                else if (dealerTotal < playerTotal){
+                    youWon();
+                }
+
+                //show the dealers hand
+                dealerHandTxt.setText(dealerHidden + dealerHand);
             }
 
-            //show the dealers hand
-            dealerHandTxt.setText(dealerHidden + dealerHand);
-
-            info.setText("Game Over");  //will be replaced with results
-            next.setText("Game Over");
         }
     }//end onPressNext()
 
