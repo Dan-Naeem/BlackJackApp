@@ -219,6 +219,7 @@ public class SoloCampaign extends Activity {
 
                     //set text
                     info.setText("Dealer has Dealed");
+                    next.setText("Your Turn");
 
                     //update values
                     dealerHandTxt.setText(faceDown + dealerHand);
