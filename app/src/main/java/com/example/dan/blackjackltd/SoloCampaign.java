@@ -460,18 +460,21 @@ public class SoloCampaign extends Activity {
         prgrmState = stateEnded;
         gameStatus = Win;
         info.setText(Win);
+        next.setText("Game Over");
     }
 
     public void youLost() {
         prgrmState = stateEnded;
         gameStatus = Lose;
         info.setText(Lose);
+        next.setText("Game Over");
     }
 
     public void gameDraw() {
         prgrmState = stateEnded;
         gameStatus = Draw;
         info.setText(Draw);
+        next.setText("Game Over");
     }
 
     public void me() {
