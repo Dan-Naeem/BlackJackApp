@@ -8,6 +8,21 @@
     android:background="@color/background">
 
     <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:background="@color/item"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/txtDealerHand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/txtDealerHand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,21 +51,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/txtPlayer"
         app:layout_constraintTop_toBottomOf="@+id/txtDealerHand" />
-
-    <TextView
-        android:id="@+id/txtInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        android:background="@color/item"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/txtDealerHand"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtPlayer"
