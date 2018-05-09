@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="background">#285244</color>
-    <color name="textBox">#638178</color>
+    <color name="item">#638178</color>
     <color name="active">#93DCC3</color>
 </resources>
