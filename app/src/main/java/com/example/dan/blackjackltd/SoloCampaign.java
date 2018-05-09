@@ -151,26 +151,19 @@ public class SoloCampaign extends Activity {
                 //increment pressNext
                 pressNext += 1;
 
-                // *1: SETTING UP DECK
+                // ** 1: deal cards to dealer and player, change state to to hit/stay
                 if (pressNext == 1) {
-                    info.setText("Setting Up Deck");
-                    next.setText("Next");
-                    dealerHandTxt.setText("---");
-                    playerHandTxt.setText("---");
+
                     //set up deck
                     deck = new int[52];
                     for (int i = 0; i < 52; i++) {
                         deck[i] = 0;
                     }
-                }
 
-                // *2: DEAL CARDS TO DEALER AND PLAYER, change state to HIT/STAY
-                else if (pressNext == 2) {
-                    //set text
-                    info.setText("Dealer has Dealed");
                     //deal 2 cards to the player
                     for (int i = 0; i < 2; i++) {
-                        //store values
+
+                        //create variables to store values
                         String cardFace = "";
                         int cardValue = 0;
 
@@ -193,9 +186,12 @@ public class SoloCampaign extends Activity {
 
                     //deal 2 cards to the dealer, one face down and one face up
                     for (int i = 0; i < 2; i++) {
+
+                        //create variables to store values
                         String cardFace = "";
                         int cardValue = 0;
 
+                        //draw a card
                         Pair<String, Integer> aCard = drawCard();
                         cardFace = aCard.first;
                         cardValue = aCard.second;
@@ -211,7 +207,7 @@ public class SoloCampaign extends Activity {
                             //add to dealer hidden
                             dealerHidden = cardFace + " ";
                         }
-                        //show second
+                        //show second card
                         else {
                             //add to dealer hand
                             dealerHand += cardFace + " ";
@@ -221,6 +217,8 @@ public class SoloCampaign extends Activity {
                         dealerTotal += cardValue;
                     }//end dealer for
 
+                    //set text
+                    info.setText("Dealer has Dealed");
 
                     //update values
                     dealerHandTxt.setText(faceDown + dealerHand);
@@ -235,7 +233,7 @@ public class SoloCampaign extends Activity {
 
                 }
 
-                // *3 AFTER PLAYER HITS STAY AND IS STILL IN THE GAME, ALLOW DEALER TO PLAY
+                // ** 2 after player hits stay and is still in the game, allow dealer to play
                 else if (pressNext == 3) {
                     //dealer hit while < 17
                     info.setText("Dealer's Turn");
@@ -269,7 +267,7 @@ public class SoloCampaign extends Activity {
                     prgrmState = stateEnded;
                     next.setText("Results");
                 }
-            }// end if state: Next
+            }// end if state = next
 
             //if state is in hit stay
             else if (prgrmState == stateHitStay) {
