@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/item"
     tools:context="com.example.dan.blackjackltd.MainActivity">
 
     <TextView
@@ -12,6 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/welcome_message"
+        android:background="@color/item"
+        android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/btnSolo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +31,8 @@
         android:layout_marginStart="8dp"
         android:onClick="soloButtonClicked"
         android:text="@string/start_solo"
+        android:background="@color/active"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/btnCoop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -43,6 +48,8 @@
         android:layout_marginStart="8dp"
         android:onClick="coopButtonClicked"
         android:text="@string/start_coop"
+        android:background="@color/active"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/btnStats"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -58,6 +65,8 @@
         android:layout_marginStart="8dp"
         android:onClick="statsButtonClicked"
         android:text="@string/stats"
+        android:background="@color/active"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
