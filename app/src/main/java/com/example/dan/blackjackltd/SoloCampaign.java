@@ -341,18 +341,14 @@ public class SoloCampaign extends Activity {
                     //else if >21 and no ace
                     else {
                         //Game Over, you lose
-                        prgrmState = stateEnded;
-                        gameStatus = Lose;
-                        info.setText(Lose);
+                        youLost();
                     }
                 }//end if >21
 
                 //check if player == 21
                 else if (playerTotal == 21){
                     //Game Over, you won
-                    prgrmState = stateEnded;
-                    gameStatus = Win;
-                    info.setText(Win);
+                    youWon();
                 }
             }
         }
