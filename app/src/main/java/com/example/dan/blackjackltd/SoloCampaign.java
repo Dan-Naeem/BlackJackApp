@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -20,6 +21,8 @@ import static java.lang.Thread.sleep;
  */
 
 public class SoloCampaign extends Activity {
+
+    DatabaseHelper myDb;
 
     TextView dealerHandTxt, playerHandTxt, info;
     Button hit, stay, next;
@@ -60,6 +63,7 @@ public class SoloCampaign extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.solo_campaign);
+        myDb = new DatabaseHelper(this);
 
         //set up text views
         dealerHandTxt = (TextView) findViewById(R.id.txtDealerHand);
@@ -301,6 +305,14 @@ public class SoloCampaign extends Activity {
 
                 //show the dealers hand
                 dealerHandTxt.setText(dealerHidden + dealerHand);
+
+                //add values to myDb
+               boolean didWork = myDb.insertData("Solo", gameStatus, playerTotal, -1, dealerTotal);
+               if (didWork== true)
+                   Toast.makeText(SoloCampaign.this, "Data Inserted", Toast.LENGTH_LONG).show();
+               else
+
+                   Toast.makeText(SoloCampaign.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
             }
 
         }

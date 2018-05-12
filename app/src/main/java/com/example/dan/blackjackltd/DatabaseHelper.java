@@ -45,9 +45,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_4, p1);
         contentValues.put(COL_5, p2);
         contentValues.put(COL_6, dealer);
-        long results = db.insert(TABLE_NAME, null, contentValues);
+        long success = db.insert(TABLE_NAME, null, contentValues);
 
-        if (results == -1)
+        if (success == -1)
             return false;
         else
             return true;
