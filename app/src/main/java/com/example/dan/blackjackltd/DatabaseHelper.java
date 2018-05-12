@@ -19,7 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_5 = "P2";
     public static final String COL_6 = "DEALER";
 
-    public DatabaseHelper(Context context, ) {
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
         SQLiteDatabase db = this.getWritableDatabase();
     }
