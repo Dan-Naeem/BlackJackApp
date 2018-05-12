@@ -1,5 +1,6 @@
 package com.example.dan.blackjackltd;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -21,7 +22,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
@@ -34,5 +34,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
+    }
+
+    public boolean insertData(String type, String results, Integer p1, Integer p2, Integer dealer) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_2, type);
+        contentValues.put(COL_3, results);
+        contentValues.put(COL_4, p1);
+        contentValues.put(COL_5, p2);
+        contentValues.put(COL_6, dealer);
+        long results = db.insert(TABLE_NAME, null, contentValues);
+
+        if (results == -1)
+            return false;
+        else
+            return true;
     }
 }
