@@ -41,7 +41,7 @@ public class StatsAct extends Activity {
         items = new ArrayList<String>();
 
         //create an array adapter for diplaying the list
-        ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
+        listAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, items);
 
         //connect adapter to a list view
@@ -92,9 +92,17 @@ public class StatsAct extends Activity {
     }
 
     public void resetData() {
-
+        //delete data from db
         myDb.deleteData();
 
+        //delete data from items
+        items.clear();
+
+        //call get Data again
+        getData();
+
+        //refresh listadapter
+        listAdapter.notifyDataSetChanged();
     }
 
     public void viewAll() {
