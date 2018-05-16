@@ -78,12 +78,12 @@ public class StatsAct extends Activity {
                 String data = "";
 
                 data += "\n";
-                data += "ID : " + c.getString(0) + "\n";
-                data += "TYPE : " + c.getString(1) + "\n";
-                data += "RESULTS : " + c.getString(2) + "\n";
-                data += "P1 : " + c.getString(3) + "\n";
-                data += "P2 : " + c.getString(4) + "\n";
-                data += "DEALER : " + c.getString(5) + "\n";
+                data += "ID :                         " + c.getString(0) + "\n";
+                data += "TYPE :                   " + c.getString(1) + "\n";
+                data += "RESULTS :          " + c.getString(2) + "\n";
+                data += "P1 :                         " + c.getString(3) + "\n";
+                data += "P2 :                          " + c.getString(4) + "\n";
+                data += "DEALER :            " + c.getString(5) + "\n";
 
                 //add to the list
                 items.add(data);
