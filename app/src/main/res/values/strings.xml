@@ -4,6 +4,7 @@
     <string name="start_solo">Start Solo Campaign</string>
     <string name="start_coop">Start Co-op Mission</string>
     <string name="stats">Statistics</string>
+    <string name="reset">Reset Game Data</string>
     <string name="local_match">Local Match</string>
     <string name="host_match">Host a Match</string>
     <string name="join_match">Join a Match</string>
