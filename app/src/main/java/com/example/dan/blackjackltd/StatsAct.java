@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by DAN on 3/29/18.
@@ -13,13 +18,30 @@ public class StatsAct extends Activity {
 
     DatabaseHelper myDb;
 
+    ListView statsList;
+
+    ArrayList<String> items;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stats_layout);
         myDb = new DatabaseHelper(this);
 
-        viewAll();
+        //setup list view
+        statsList = (ListView) findViewById(R.id.listView);
+
+        //initialize list
+        items = new ArrayList<String>();
+
+        //create an array adapter for diplaying the list
+        ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, items);
+
+        //connect adapter to a list view
+        statsList.setAdapter(listAdapter);
+
+        // viewAll();
     }
 
     public void viewAll() {
