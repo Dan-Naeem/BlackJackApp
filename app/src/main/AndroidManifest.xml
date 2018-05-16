@@ -30,7 +30,13 @@
         </activity>
         <activity android:name=".StatsAct">
             <intent-filter>
-                <action android:name="android.intent.action.Coop" />
+                <action android:name="android.intent.action.Stats" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name=".LocalMatch">
+            <intent-filter>
+                <action android:name="android.intent.action.Local" />
 
             </intent-filter>
         </activity>

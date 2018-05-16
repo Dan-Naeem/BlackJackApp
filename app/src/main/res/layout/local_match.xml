@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/localInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:background="@color/item"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/localDealer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/localDealer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:background="@color/item"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/P1"
+        app:layout_constraintEnd_toStartOf="@+id/localDealerHand"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/localInfo" />
+
+    <TextView
+        android:id="@+id/P1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:background="@color/item"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/P2"
+        app:layout_constraintEnd_toStartOf="@+id/P1Hand"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/localDealer" />
+
+    <TextView
+        android:id="@+id/P2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:background="@color/item"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/localHit"
+        app:layout_constraintEnd_toStartOf="@+id/P2Hand"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/P1" />
+
+    <TextView
+        android:id="@+id/localDealerHand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:background="@color/item"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/P1Hand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/localDealer"
+        app:layout_constraintTop_toBottomOf="@+id/localInfo" />
+
+    <TextView
+        android:id="@+id/P1Hand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:background="@color/item"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/P2Hand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/P1"
+        app:layout_constraintTop_toBottomOf="@+id/localDealerHand" />
+
+    <TextView
+        android:id="@+id/P2Hand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:background="@color/item"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/localStay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/P2"
+        app:layout_constraintTop_toBottomOf="@+id/P1Hand" />
+
+    <Button
+        android:id="@+id/localHit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="@string/hit"
+        android:background="@color/item"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/localNext"
+        app:layout_constraintEnd_toStartOf="@+id/localStay"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/P2" />
+
+    <Button
+        android:id="@+id/localStay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="@string/stay"
+        android:background="@color/item"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/localNext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/localHit"
+        app:layout_constraintTop_toBottomOf="@+id/P2Hand" />
+
+    <Button
+        android:id="@+id/localNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/item"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/localHit" />
+</android.support.constraint.ConstraintLayout>
