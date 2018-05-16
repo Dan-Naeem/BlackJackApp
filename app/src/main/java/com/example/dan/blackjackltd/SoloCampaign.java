@@ -100,33 +100,14 @@ public class SoloCampaign extends Activity {
         prgrmState = stateNext;
         gameStatus = inPrg;
 
-
-
-        Button myButton = new Button(this);
-        myButton.setText("Push Me!");
-
-        myButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                me();
-            }
-        });
-
-        ConstraintLayout ll= (ConstraintLayout) findViewById(R.id.solo_layout);
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
-        lp.addRule(RelativeLayout.BELOW, R.id.txtInfo);
-        ll.addView(myButton);
-
-
-        next.setText("Click below to Start the Game");
-
+        //enable button click functionality
         next.setOnClickListener(new View.OnClickListener() {
-             public void onClick(View v) {
+            public void onClick(View v) {
 
-                 //call pressNext method
-                 onPressNext();
+                //call pressNext method
+                onPressNext();
 
-             }//end onClick
+            }//end onClick
         });//end listener
 
         hit.setOnClickListener(new View.OnClickListener() {
@@ -146,6 +127,27 @@ public class SoloCampaign extends Activity {
 
             }//end onClick
         });//end listener
+
+        //start game
+        next.setText("Click below to Start the Game");
+        next.setBackgroundResource(R.color.active);
+
+
+        //debugging
+        Button myButton = new Button(this);
+        myButton.setText("Push Me!");
+
+        myButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                me();
+            }
+        });
+
+        ConstraintLayout ll= (ConstraintLayout) findViewById(R.id.solo_layout);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+        lp.addRule(RelativeLayout.BELOW, R.id.txtInfo);
+        ll.addView(myButton);
     }//end onCreate
 
     public void onPressNext(){
@@ -236,6 +238,11 @@ public class SoloCampaign extends Activity {
                     }
 
                     //check 2 aces drawn
+
+                    //change button colors
+                    next.setBackgroundResource(R.color.item);
+                    hit.setBackgroundResource(R.color.active);
+                    stay.setBackgroundResource(R.color.active);
 
                     //change state to hit_stay
                     prgrmState = stateHitStay;
@@ -395,11 +402,16 @@ public class SoloCampaign extends Activity {
 
                 info.setText("You chose stay");
 
-                //change state to next
-                prgrmState = stateNext;
-
                 //change text
                 next.setText("Next");
+
+                //change button colors
+                next.setBackgroundResource(R.color.active);
+                hit.setBackgroundResource(R.color.item);
+                stay.setBackgroundResource(R.color.item);
+
+                //change state to next
+                prgrmState = stateNext;
             }
         }
 
@@ -487,6 +499,12 @@ public class SoloCampaign extends Activity {
         gameStatus = Win;
         info.setText(Win);
         next.setText("Game Over");
+
+        //change button colors
+        next.setBackgroundResource(R.color.item);
+        hit.setBackgroundResource(R.color.item);
+        stay.setBackgroundResource(R.color.item);
+
     }
 
     public void youLost() {
@@ -494,6 +512,11 @@ public class SoloCampaign extends Activity {
         gameStatus = Lose;
         info.setText(Lose);
         next.setText("Game Over");
+
+        //change button colors
+        next.setBackgroundResource(R.color.item);
+        hit.setBackgroundResource(R.color.item);
+        stay.setBackgroundResource(R.color.item);
     }
 
     public void gameDraw() {
@@ -501,6 +524,11 @@ public class SoloCampaign extends Activity {
         gameStatus = Draw;
         info.setText(Draw);
         next.setText("Game Over");
+
+        //change button colors
+        next.setBackgroundResource(R.color.item);
+        hit.setBackgroundResource(R.color.item);
+        stay.setBackgroundResource(R.color.item);
     }
 
     public void me() {
