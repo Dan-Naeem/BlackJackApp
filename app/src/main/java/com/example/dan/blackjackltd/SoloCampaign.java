@@ -370,10 +370,12 @@ public class SoloCampaign extends Activity {
 
                 //if player over 21
                 if (playerTotal > 21){
-
                     //check for an ace
                     if (playerAce > 0){
-                        info.setText("PLayer Has an Ace");
+                        //lower total
+                        playerTotal -= 10;
+                        //lower ace count
+                        playerAce -= 1;
                     }
                     //else if >21 and no ace
                     else {
