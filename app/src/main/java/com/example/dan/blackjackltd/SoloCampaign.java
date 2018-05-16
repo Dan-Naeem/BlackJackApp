@@ -1,6 +1,7 @@
 package com.example.dan.blackjackltd;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -180,7 +181,7 @@ public class SoloCampaign extends Activity {
                         cardValue = aCard.second;
 
                         //if an ace was drawn
-                        if (cardFace.substring(0, 1) == "A") {
+                        if ( cardFace.substring(0, 1).equals("A") ){
                             //add to ace count
                             playerAce += 1;
                         }
@@ -217,7 +218,7 @@ public class SoloCampaign extends Activity {
                         cardValue = aCard.second;
 
                         //if an ace was drawn
-                        if (cardFace.substring(0, 1) == "A") {
+                        if ( cardFace.substring(0, 1).equals("A") ){
                             //add to ace count
                             dealerAce += 1;
                         }
@@ -277,17 +278,22 @@ public class SoloCampaign extends Activity {
                         cardValue = aCard.second;
 
                         //if an ace was drawn
-                        if (cardFace.substring(0, 1) == "A"){
+                        if ( cardFace.substring(0, 1).equals("A") ){
                             //add to ace count
                             dealerAce += 1;
                         }
 
                         //add to dealer hand and value
-                        dealerHand += cardFace + "";
+                        dealerHand += cardFace + " ";
                         dealerTotal += cardValue;
 
                         //if the dealer busts and has an ace
-                            //lower ace to 1
+                        if (dealerTotal > 21 && dealerAce > 0){
+                            //lower dealer total
+                            dealerTotal -= 10;
+                            //lower dealer ace count
+                            dealerAce -= 1;
+                        }
                     }
 
                     //show dealer's hand
@@ -355,7 +361,7 @@ public class SoloCampaign extends Activity {
                 cardValue = aCard.second;
 
                 //if an ace was drawn
-                if (cardFace.substring(0, 1) == "A"){
+                if ( cardFace.substring(0, 1).equals("A") ){
                     //add to ace count
                     playerAce += 1;
                 }
@@ -467,15 +473,15 @@ public class SoloCampaign extends Activity {
             cardValue += 10;
         }
         else if (num == 1) {
-            cardFace += 'A';
+            cardFace += "A";
             cardValue += 11;
         }
         else if (num == 11) {
-            cardFace += 'J';
+            cardFace += "J";
             cardValue += 10;
         }
         else if (num == 12) {
-            cardFace += 'Q';
+            cardFace += "Q";
             cardValue += 10;
         }
         else {
@@ -560,7 +566,7 @@ public class SoloCampaign extends Activity {
     }
 
     public void me() {
-        info.setText("pressNext = " + pressNext);
+        //debugging
     }
 
 
