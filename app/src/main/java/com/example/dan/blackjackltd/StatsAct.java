@@ -41,7 +41,7 @@ public class StatsAct extends Activity {
         //connect adapter to a list view
         statsList.setAdapter(listAdapter);
 
-        // viewAll();
+        getData();
     }
 
     public void getData() {
