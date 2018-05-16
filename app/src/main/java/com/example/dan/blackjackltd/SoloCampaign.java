@@ -294,7 +294,8 @@ public class SoloCampaign extends Activity {
         //else if state ended
         else if (prgrmState == stateEnded) {
 
-            //if the results aren't in yet
+            // if the results aren't in yet
+            // (basically, if you havent won or lost before the dealer played)
             if (gameStatus == inPrg){
                 //compare values, declare ruling
                 if (dealerTotal > 21){
@@ -312,14 +313,6 @@ public class SoloCampaign extends Activity {
 
                 //show the dealers hand
                 dealerHandTxt.setText(dealerHidden + dealerHand);
-
-                //add values to myDb
-               boolean didWork = myDb.insertData("Solo", gameStatus, playerTotal, -1, dealerTotal);
-               if (didWork== true)
-                   Toast.makeText(SoloCampaign.this, "Data Inserted", Toast.LENGTH_LONG).show();
-               else
-
-                   Toast.makeText(SoloCampaign.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
             }
 
         }
@@ -492,7 +485,7 @@ public class SoloCampaign extends Activity {
         Pair<String, Integer> card_Face_Val = new Pair<String, Integer>(cardFace, cardValue);
 
         return card_Face_Val;
-    };
+    }
 
     public void youWon() {
         prgrmState = stateEnded;
@@ -504,6 +497,8 @@ public class SoloCampaign extends Activity {
         next.setBackgroundResource(R.color.item);
         hit.setBackgroundResource(R.color.item);
         stay.setBackgroundResource(R.color.item);
+
+        postResults();
 
     }
 
@@ -517,6 +512,8 @@ public class SoloCampaign extends Activity {
         next.setBackgroundResource(R.color.item);
         hit.setBackgroundResource(R.color.item);
         stay.setBackgroundResource(R.color.item);
+
+        postResults();
     }
 
     public void gameDraw() {
@@ -529,6 +526,21 @@ public class SoloCampaign extends Activity {
         next.setBackgroundResource(R.color.item);
         hit.setBackgroundResource(R.color.item);
         stay.setBackgroundResource(R.color.item);
+
+        postResults();
+    }
+
+    public void postResults() {
+
+        //add values to myDb
+        boolean didWork = myDb.insertData("Solo", gameStatus, playerTotal, -1, dealerTotal);
+
+        //display a message
+        if (didWork== true)
+            Toast.makeText(SoloCampaign.this, "Data Inserted", Toast.LENGTH_LONG).show();
+        else
+
+            Toast.makeText(SoloCampaign.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
     }
 
     public void me() {
