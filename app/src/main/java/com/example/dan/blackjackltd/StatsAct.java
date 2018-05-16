@@ -44,6 +44,37 @@ public class StatsAct extends Activity {
         // viewAll();
     }
 
+    public void getData() {
+        //create a cursor for the db
+        Cursor c = myDb.getAllData();
+
+        if (c.getCount() == 0) {
+            //show message
+            showMessage("Error", "Nothing Found");
+            return;
+        }
+
+        else {
+
+            //go thru the db
+            while ( c.moveToNext() ) {
+                //store  data from one game
+                String data = "";
+
+                data += "\n";
+                data += "ID : " + c.getString(0) + "\n";
+                data += "TYPE : " + c.getString(1) + "\n";
+                data += "RESULTS : " + c.getString(2) + "\n";
+                data += "P1 : " + c.getString(3) + "\n";
+                data += "P2 : " + c.getString(4) + "\n";
+                data += "DEALER : " + c.getString(5) + "\n";
+
+                //add to the list
+                items.add(data);
+            }
+        }
+    }
+
     public void viewAll() {
        Cursor res = myDb.getAllData();
 
