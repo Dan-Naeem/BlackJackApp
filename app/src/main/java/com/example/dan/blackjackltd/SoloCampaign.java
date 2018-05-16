@@ -191,6 +191,19 @@ public class SoloCampaign extends Activity {
                         playerTotal += cardValue;
                     }//end player for
 
+                    //check for player == 21
+                    if (playerTotal == 21){
+                        youWon();
+                    }
+
+                    //check 2 aces drawn (player)
+                    if (playerAce == 2) {
+                        //lower player total
+                        playerTotal = 12;
+                        //lower player ace
+                        playerAce = 1;
+                    }
+
                     //deal 2 cards to the dealer, one face down and one face up
                     for (int i = 0; i < 2; i++) {
 
@@ -224,6 +237,14 @@ public class SoloCampaign extends Activity {
                         dealerTotal += cardValue;
                     }//end dealer for
 
+                    //check 2 aces drawn (dealer)
+                    if (dealerAce == 2) {
+                        //lower dealer total
+                        dealerTotal = 12;
+                        //lower dealer ace
+                        dealerAce = 1;
+                    }
+
                     //set text
                     info.setText("Dealer has Dealed");
                     next.setText("Your Turn");
@@ -231,13 +252,6 @@ public class SoloCampaign extends Activity {
                     //update values
                     dealerHandTxt.setText(faceDown + dealerHand);
                     playerHandTxt.setText(playerHand);
-
-                    //check for player == 21
-                    if (playerTotal == 21){
-                        youWon();
-                    }
-
-                    //check 2 aces drawn
 
                     //change button colors
                     next.setBackgroundResource(R.color.item);
