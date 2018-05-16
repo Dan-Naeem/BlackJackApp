@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -21,6 +23,10 @@ public class StatsAct extends Activity {
     ListView statsList;
 
     ArrayList<String> items;
+
+    ArrayAdapter<String> listAdapter;
+
+    Button reset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,16 @@ public class StatsAct extends Activity {
         //connect adapter to a list view
         statsList.setAdapter(listAdapter);
 
+        //set OnClick for reset button
+        reset = (Button) findViewById(R.id.resetButton);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetData();
+            }
+        });
+
+        //populate list
         getData();
     }
 
@@ -73,6 +89,12 @@ public class StatsAct extends Activity {
                 items.add(data);
             }
         }
+    }
+
+    public void resetData() {
+
+        myDb.deleteData();
+
     }
 
     public void viewAll() {
