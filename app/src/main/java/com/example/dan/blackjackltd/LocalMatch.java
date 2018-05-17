@@ -369,123 +369,125 @@ public class LocalMatch extends Activity {
         }// end if game has not ended
 
         //else if state  ended
-        else if (prgrmState == stateEnded){
-            //determine the winner
+        else if (prgrmState == stateEnded) {
+            //while game is still active, determine winner and post score
+            if (gameStatus == inPrg) {
 
-            //if p1 && p2 lost
-            if (p1Total > 21 && p2Total > 21) {
-                //if dealer bust
-                if (dealerTotal > 21){
-                    //everyone lost
-                    allLost();
-                }
-                //else if dealer is still in
-                else{
-                    //dealer won
-                    dealerWon();
-                }
-            }
-
-            //if p1 lost
-            else if (p1Total > 21) {
-                //if dealer bust
-                if (dealerTotal > 21){
-                    //p2won
-                    p2Won();
-                }
-                //else if dealer is still in the game
-                else {
-                    //p2 beat dealer
-                    if (p2Total > dealerTotal) {
-                        //p2won
-                        p2Won();
+                //if p1 && p2 lost
+                if (p1Total > 21 && p2Total > 21) {
+                    //if dealer bust
+                    if (dealerTotal > 21) {
+                        //everyone lost
+                        allLost();
                     }
-                    //dealer beat p2
-                    else if (dealerTotal > p2Total){
-                        //dealer won
-                        dealerWon();
-                    }
-                    //dealer == p2
-                    else{
-                        //2 way tie
-                        twoTie();
-                    }
-                }
-            }
-
-            //if p2 lost
-            else if (p2Total > 21) {
-                //if dealer bust
-                if (dealerTotal > 21) {
-                    //p1won
-                    p1Won();
-                }
-                //else if dealer is still in the game
-                else {
-                    //p1 beat dealer
-                    if (p1Total > dealerTotal){
-                        //p1won
-                        p1Won();
-                    }
-                    //dealer beat p1
-                    if (dealerTotal > p1Total){
-                        //dealer won
-                        dealerWon();
-                    }
-                    //dealer == p1
+                    //else if dealer is still in
                     else {
-                        //2 way tie
-                        twoTie();
-                    }
-                }
-            }
-
-            //if both players are still in
-            else {
-                //dealer bust
-                if (dealerTotal > 21) {
-                    //p1 > p2
-                    if (p1Total > p2Total){
-                        //p1won
-                        p1Won();
-                    }
-                    //p2 > p1
-                    else if (p2Total > p1Total){
-                        //p2won
-                        p2Won();
-                    }
-                    //p1 == p2
-                    else {
-                        //2 way tie
-                        twoTie();
-                    }
-                }
-                //dealer didnt bust, all 3 are still in the game
-                else {
-                    //if p1 beat p2 and dealer
-                    if (p1Total > p2Total && p1Total > dealerTotal) {
-                        //p1won
-                        p1Won();
-                    }
-                    //if p2 beat p1 and dealer
-                    if (p2Total > p1Total && p2Total > dealerTotal){
-                        //p2won
-                        p2Won();
-                    }
-                    //if dealer beat p1 and p2
-                    if (dealerTotal > p1Total && dealerTotal > p2Total){
                         //dealer won
                         dealerWon();
                     }
-                    //if 3 way tie
-                    if (p1Total == p2Total && p1Total == dealerTotal){
-                        //3 way tie
-                        threeTie();
+                }
+
+                //if p1 lost
+                else if (p1Total > 21) {
+                    //if dealer bust
+                    if (dealerTotal > 21) {
+                        //p2won
+                        p2Won();
                     }
-                    //else other 2 way ties
-                    else{
-                        //2 way tie
-                        twoTie();
+                    //else if dealer is still in the game
+                    else {
+                        //p2 beat dealer
+                        if (p2Total > dealerTotal) {
+                            //p2won
+                            p2Won();
+                        }
+                        //dealer beat p2
+                        else if (dealerTotal > p2Total) {
+                            //dealer won
+                            dealerWon();
+                        }
+                        //dealer == p2
+                        else {
+                            //2 way tie
+                            twoTie();
+                        }
+                    }
+                }
+
+                //if p2 lost
+                else if (p2Total > 21) {
+                    //if dealer bust
+                    if (dealerTotal > 21) {
+                        //p1won
+                        p1Won();
+                    }
+                    //else if dealer is still in the game
+                    else {
+                        //p1 beat dealer
+                        if (p1Total > dealerTotal) {
+                            //p1won
+                            p1Won();
+                        }
+                        //dealer beat p1
+                        if (dealerTotal > p1Total) {
+                            //dealer won
+                            dealerWon();
+                        }
+                        //dealer == p1
+                        else {
+                            //2 way tie
+                            twoTie();
+                        }
+                    }
+                }
+
+                //if both players are still in
+                else {
+                    //dealer bust
+                    if (dealerTotal > 21) {
+                        //p1 > p2
+                        if (p1Total > p2Total) {
+                            //p1won
+                            p1Won();
+                        }
+                        //p2 > p1
+                        else if (p2Total > p1Total) {
+                            //p2won
+                            p2Won();
+                        }
+                        //p1 == p2
+                        else {
+                            //2 way tie
+                            twoTie();
+                        }
+                    }
+                    //dealer didnt bust, all 3 are still in the game
+                    else {
+                        //if p1 beat p2 and dealer
+                        if (p1Total > p2Total && p1Total > dealerTotal) {
+                            //p1won
+                            p1Won();
+                        }
+                        //if p2 beat p1 and dealer
+                        if (p2Total > p1Total && p2Total > dealerTotal) {
+                            //p2won
+                            p2Won();
+                        }
+                        //if dealer beat p1 and p2
+                        if (dealerTotal > p1Total && dealerTotal > p2Total) {
+                            //dealer won
+                            dealerWon();
+                        }
+                        //if 3 way tie
+                        if (p1Total == p2Total && p1Total == dealerTotal) {
+                            //3 way tie
+                            threeTie();
+                        }
+                        //else other 2 way ties
+                        else {
+                            //2 way tie
+                            twoTie();
+                        }
                     }
                 }
             }
