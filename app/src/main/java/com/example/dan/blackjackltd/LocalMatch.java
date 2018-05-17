@@ -215,7 +215,7 @@ public class LocalMatch extends Activity {
                         }
 
                         //hide first card
-                        if (1 == 0){
+                        if (i == 0){
                             //add to p2hidden
                             p2Hidden += cardFace  + " ";
                         }
