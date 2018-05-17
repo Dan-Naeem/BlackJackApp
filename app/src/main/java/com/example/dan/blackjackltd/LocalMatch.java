@@ -469,17 +469,17 @@ public class LocalMatch extends Activity {
                             p1Won();
                         }
                         //if p2 beat p1 and dealer
-                        if (p2Total > p1Total && p2Total > dealerTotal) {
+                        else if (p2Total > p1Total && p2Total > dealerTotal) {
                             //p2won
                             p2Won();
                         }
                         //if dealer beat p1 and p2
-                        if (dealerTotal > p1Total && dealerTotal > p2Total) {
+                        else if (dealerTotal > p1Total && dealerTotal > p2Total) {
                             //dealer won
                             dealerWon();
                         }
                         //if 3 way tie
-                        if (p1Total == p2Total && p1Total == dealerTotal) {
+                        else if (p1Total == p2Total && p1Total == dealerTotal) {
                             //3 way tie
                             threeTie();
                         }
