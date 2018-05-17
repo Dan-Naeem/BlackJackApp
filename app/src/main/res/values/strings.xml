@@ -10,6 +10,8 @@
     <string name="join_match">Join a Match</string>
     <string name="dealer">DEALER</string>
     <string name="player">PLAYER</string>
+    <string name="p1">PLAYER 1</string>
+    <string name="p2">PLAYER 2</string>
     <string name="hit">HIT</string>
     <string name="stay">STAY</string>
 </resources>

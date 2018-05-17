@@ -141,7 +141,7 @@ public class SoloCampaign extends Activity {
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                me();
+                debug();
             }
         });
 
@@ -565,7 +565,7 @@ public class SoloCampaign extends Activity {
             Toast.makeText(SoloCampaign.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
     }
 
-    public void me() {
+    public void debug() {
         //debugging
     }
 
