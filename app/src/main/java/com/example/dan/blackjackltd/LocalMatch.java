@@ -41,7 +41,7 @@ public class LocalMatch extends Activity {
     String dealerHand, dealerHidden;
 
     //facedown
-    String faceDown = "??";
+    String faceDown = "?? ";
 
     //state: control state of the program and status of game
     String prgrmState, gameStatus;
@@ -490,6 +490,9 @@ public class LocalMatch extends Activity {
                         }
                     }
                 }
+
+                //show the dealers hand
+                dealerHandTxt.setText(dealerHidden + dealerHand);
             }
         }
     }//end on press next
