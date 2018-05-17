@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Pair;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +40,7 @@ public class LocalMatch extends Activity {
     int dealerTotal, dealerAce;
     String dealerHand, dealerHidden;
 
-    //hidden
+    //facedown
     String faceDown = "??";
 
     //state: control state of the program and status of game
@@ -105,6 +106,38 @@ public class LocalMatch extends Activity {
         //set up state of the program and game status
         prgrmState = stateNext;
         gameStatus = inPrg;
+
+        //enable button click functionality
+        next.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                //call pressNext method
+                onPressNext();
+
+            }//end onClick
+        });//end listener
+
+        hit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                //call pressNext method
+                onPressHit();
+
+            }//end onClick
+        });//end listener
+
+        stay.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                //call pressNext method
+                onPressStay();
+
+            }//end onClick
+        });//end listener
+
+        //start game
+        next.setText("Click below to Start the Game");
+        next.setBackgroundResource(R.color.active);
 
     }
 
