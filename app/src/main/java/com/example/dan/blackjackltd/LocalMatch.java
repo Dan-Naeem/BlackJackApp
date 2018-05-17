@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.Pair;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -56,10 +57,12 @@ public class LocalMatch extends Activity {
     //active
     final static String inPrg = "In Progress";
     //end
-    final static String p1Win = "P1 Won";
-    final static String p2Win = "P2 Won";
-    final static String dealerWin = "dealer Won";
-    final static String Draw = "Draw";
+    final static String allLost = "Everyone Lost";
+    final static String p1Won = "P1 Won";
+    final static String p2Won = "P2 Won";
+    final static String dealerWon = "dealer Won";
+    final static String twoTie = "2-Way Tie";
+    final static String threeTie = "3-Way Tie";
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -341,10 +344,12 @@ public class LocalMatch extends Activity {
                 //if dealer bust
                 if (dealerTotal > 21){
                     //everyone lost
+                    allLost();
                 }
                 //else if dealer is still in
                 else{
                     //dealer won
+                    dealerWon();
                 }
             }
 
@@ -353,20 +358,24 @@ public class LocalMatch extends Activity {
                 //if dealer bust
                 if (dealerTotal > 21){
                     //p2won
+                    p2Won();
                 }
                 //else if dealer is still in the game
                 else {
                     //p2 beat dealer
                     if (p2Total > dealerTotal) {
                         //p2won
+                        p2Won();
                     }
                     //dealer beat p2
                     else if (dealerTotal > p2Total){
                         //dealer won
+                        dealerWon();
                     }
                     //dealer == p2
                     else{
                         //2 way tie
+                        twoTie();
                     }
                 }
             }
@@ -376,20 +385,24 @@ public class LocalMatch extends Activity {
                 //if dealer bust
                 if (dealerTotal > 21) {
                     //p1won
+                    p1Won();
                 }
                 //else if dealer is still in the game
                 else {
                     //p1 beat dealer
                     if (p1Total > dealerTotal){
                         //p1won
+                        p1Won();
                     }
                     //dealer beat p1
                     if (dealerTotal > p1Total){
                         //dealer won
+                        dealerWon();
                     }
                     //dealer == p1
                     else {
                         //2 way tie
+                        twoTie();
                     }
                 }
             }
@@ -401,14 +414,17 @@ public class LocalMatch extends Activity {
                     //p1 > p2
                     if (p1Total > p2Total){
                         //p1won
+                        p1Won();
                     }
                     //p2 > p1
                     else if (p2Total > p1Total){
                         //p2won
+                        p2Won();
                     }
                     //p1 == p2
                     else {
                         //2 way tie
+                        twoTie();
                     }
                 }
                 //dealer didnt bust, all 3 are still in the game
@@ -416,22 +432,27 @@ public class LocalMatch extends Activity {
                     //if p1 beat p2 and dealer
                     if (p1Total > p2Total && p1Total > dealerTotal) {
                         //p1won
+                        p1Won();
                     }
                     //if p2 beat p1 and dealer
                     if (p2Total > p1Total && p2Total > dealerTotal){
                         //p2won
+                        p2Won();
                     }
                     //if dealer beat p1 and p2
                     if (dealerTotal > p1Total && dealerTotal > p2Total){
                         //dealer won
+                        dealerWon();
                     }
                     //if 3 way tie
                     if (p1Total == p2Total && p1Total == dealerTotal){
                         //3 way tie
+                        threeTie();
                     }
                     //else other 2 way ties
                     else{
                         //2 way tie
+                        twoTie();
                     }
                 }
             }
@@ -715,6 +736,103 @@ public class LocalMatch extends Activity {
         Pair<String, Integer> card_Face_Val = new Pair<String, Integer>(cardFace, cardValue);
 
         return card_Face_Val;
+    }
+
+    public void allLost(){
+        prgrmState = stateEnded;
+        gameStatus = allLost;
+        info.setText(allLost);
+        next.setText("Game Over");
+
+        //change button colors
+        next.setBackgroundResource(R.color.item);
+        hit.setBackgroundResource(R.color.item);
+        stay.setBackgroundResource(R.color.item);
+
+        postResults();
+    }
+
+    public void p1Won(){
+        prgrmState = stateEnded;
+        gameStatus = p1Won;
+        info.setText(p1Won);
+        next.setText("Game Over");
+
+        //change button colors
+        next.setBackgroundResource(R.color.item);
+        hit.setBackgroundResource(R.color.item);
+        stay.setBackgroundResource(R.color.item);
+
+        postResults();
+    }
+
+    public void p2Won(){
+        prgrmState = stateEnded;
+        gameStatus = p2Won;
+        info.setText(p2Won);
+        next.setText("Game Over");
+
+        //change button colors
+        next.setBackgroundResource(R.color.item);
+        hit.setBackgroundResource(R.color.item);
+        stay.setBackgroundResource(R.color.item);
+
+        postResults();
+    }
+
+    public void dealerWon(){
+        prgrmState = stateEnded;
+        gameStatus = dealerWon;
+        info.setText(dealerWon);
+        next.setText("Game Over");
+
+        //change button colors
+        next.setBackgroundResource(R.color.item);
+        hit.setBackgroundResource(R.color.item);
+        stay.setBackgroundResource(R.color.item);
+
+        postResults();
+    }
+
+    public void twoTie(){
+        prgrmState = stateEnded;
+        gameStatus = twoTie;
+        info.setText(twoTie);
+        next.setText("Game Over");
+
+        //change button colors
+        next.setBackgroundResource(R.color.item);
+        hit.setBackgroundResource(R.color.item);
+        stay.setBackgroundResource(R.color.item);
+
+        postResults();
+    }
+
+    public void threeTie() {
+        prgrmState = stateEnded;
+        gameStatus = threeTie;
+        info.setText(threeTie);
+        next.setText("Game Over");
+
+        //change button colors
+        next.setBackgroundResource(R.color.item);
+        hit.setBackgroundResource(R.color.item);
+        stay.setBackgroundResource(R.color.item);
+
+        postResults();
+    }
+
+    public void postResults() {
+
+        //add values to myDb
+        boolean didWork = myDb.insertData("Multi", gameStatus, p1Total, p2Total, dealerTotal);
+
+        //display a message
+        if (didWork== true)
+            Toast.makeText(LocalMatch.this, "Data Inserted", Toast.LENGTH_LONG).show();
+        else
+
+            Toast.makeText(LocalMatch.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
     }
 }
 
