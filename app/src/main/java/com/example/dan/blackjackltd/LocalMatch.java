@@ -109,9 +109,334 @@ public class LocalMatch extends Activity {
     public void onPressNext() {
         //if game has not ended
         if (prgrmState != stateEnded){
-            //
+            //if state is in next
+            if (prgrmState == stateNext) {
+                //increment pressNext
+                pressNext += 1;
+
+                // ** 1: deal cards to dealer and players, change state to p1
+                if (pressNext == 1){
+
+                    //set up deck
+                    deck = new int[52];
+                    for (int i = 0; i < 52; i++) {
+                        deck[i] = 0;
+                    }
+
+                    //PLAYER 1 - deal 2 cards
+                    for (int i = 0; i < 2; i++) {
+
+                        //create variables to store values
+                        String cardFace = "";
+                        int cardValue = 0;
+
+                        //draw a card
+                        Pair<String, Integer> aCard = drawCard();
+                        cardFace = aCard.first;
+                        cardValue = aCard.second;
+
+                        //if an ace was drawn
+                        if ( cardFace.substring(0, 1).equals("A") ){
+                            //add to ace count
+                            p1Ace += 1;
+                        }
+
+                        //add to player hand
+                        p1Hand += cardFace + " ";
+                        //add to player total
+                        p1Total += cardValue;
+                    }//end player 1
+
+                    //check for player == 21
+                    if (p1Total == 21){
+                        // youWon();
+                    }
+
+                    //check 2 aces drawn (player1)
+                    if (p1Ace == 2) {
+                        //lower player total
+                        p1Total = 12;
+                        //lower player ace
+                        p1Ace = 1;
+                    }
+
+                    //PLAYER 2 - deal 2 cards, one face down
+                    for (int i = 0; i < 2; i++) {
+
+                        //create variables to store values
+                        String cardFace = "";
+                        int cardValue = 0;
+
+                        //draw a card
+                        Pair<String, Integer> aCard = drawCard();
+                        cardFace = aCard.first;
+                        cardValue = aCard.second;
+
+                        //if an ace was drawn
+                        if ( cardFace.substring(0, 1).equals("A") ){
+                            //add to ace count
+                            p2Ace += 1;
+                        }
+
+                        //hide first card
+                        if (1 == 0){
+                            //add to p2hidden
+                            p2Hidden += cardFace  + " ";
+                        }
+                        //show second card
+                        else {
+                            //add to p2hand
+                            p2Hand += cardFace + " ";
+                        }
+
+                        //add to player total
+                        p2Total += cardValue;
+                    }//end player 2
+
+                    //check for player == 21
+                    if (p2Total == 21){
+                        // youWon();
+                    }
+
+                    //check 2 aces drawn (player1)
+                    if (p2Ace == 2) {
+                        //lower player total
+                        p2Total = 12;
+                        //lower player ace
+                        p2Ace = 1;
+                    }
+
+                    //deal 2 cards to the dealer, one face down and one face up
+                    for (int i = 0; i < 2; i++) {
+
+                        //create variables to store values
+                        String cardFace = "";
+                        int cardValue = 0;
+
+                        //draw a card
+                        Pair<String, Integer> aCard = drawCard();
+                        cardFace = aCard.first;
+                        cardValue = aCard.second;
+
+                        //if an ace was drawn
+                        if ( cardFace.substring(0, 1).equals("A") ){
+                            //add to ace count
+                            dealerAce += 1;
+                        }
+
+                        //hide first card
+                        if (i == 0) {
+                            //add to dealer hidden
+                            dealerHidden = cardFace + " ";
+                        }
+                        //show second card
+                        else {
+                            //add to dealer hand
+                            dealerHand += cardFace + " ";
+                        }
+
+                        //add to dealer total
+                        dealerTotal += cardValue;
+                    }//end dealer for
+
+                    //check 2 aces drawn (dealer)
+                    if (dealerAce == 2) {
+                        //lower dealer total
+                        dealerTotal = 12;
+                        //lower dealer ace
+                        dealerAce = 1;
+                    }
+
+                    //set text
+                    info.setText("Player 1's Turn");
+                    next.setText("PLAYER 1 - GO");
+
+                    //update values
+                    dealerHandTxt.setText(faceDown + dealerHand);
+                    p1HandTxt.setText(p1Hand);
+                    p2HandTxt.setText(faceDown + p2Hand);
+
+                    //change button colors
+                    next.setBackgroundResource(R.color.item);
+                    hit.setBackgroundResource(R.color.active);
+                    stay.setBackgroundResource(R.color.active);
+
+                    //change state to hit_stay
+                    prgrmState = stateP1;
+
+                }
+
+                // ** 2 reveal p2 hidden, change state to p2
+                if (pressNext == 2){
+                    //reveal p2 hand
+                    p2Hand = p2Hidden + p2Hand;
+                    p2HandTxt.setText(p2Hand);
+
+                    //set text
+                    info.setText("Player 2's Turn");
+                    next.setText("PLAYER 2 - GO");
+
+                    //change button colors
+                    next.setBackgroundResource(R.color.item);
+                    hit.setBackgroundResource(R.color.active);
+                    stay.setBackgroundResource(R.color.active);
+
+                    //change state to hit_stay
+                    prgrmState = stateP2;
+                }
+
+                // ** 3 if any player is still in the game, dealer plays
+                if (pressNext == 3){
+                    //dealer hit while < 17
+                    info.setText("Dealer's Turn");
+                    while (dealerTotal < 17){
+                        String cardFace = "";
+                        int cardValue = 0;
+
+                        //draw a card
+                        Pair<String, Integer> aCard = drawCard();
+                        cardFace = aCard.first;
+                        cardValue = aCard.second;
+
+                        //if an ace was drawn
+                        if ( cardFace.substring(0, 1).equals("A") ){
+                            //add to ace count
+                            dealerAce += 1;
+                        }
+
+                        //add to dealer hand and value
+                        dealerHand += cardFace + " ";
+                        dealerTotal += cardValue;
+
+                        //if the dealer busts and has an ace
+                        if (dealerTotal > 21 && dealerAce > 0){
+                            //lower dealer total
+                            dealerTotal -= 10;
+                            //lower dealer ace count
+                            dealerAce -= 1;
+                        }
+                    }
+
+                    //show dealer's hand
+                    dealerHandTxt.setText(faceDown + dealerHand);
+
+                    //after the dealer stops, go to end game
+                    prgrmState = stateEnded;
+                    next.setText("Results");
+                }
+            }//end if state next
+
+            //else if either of the players are playing
+            else{
+                //mention hit or stay
+            }
+        }// end if game has not ended
+
+        //else if state  ended
+        else if (prgrmState == stateEnded){
+            //determine the winner
+
+            //if p1 && p2 lost
+            if (p1Total > 21 && p2Total > 21) {
+                //if dealer bust
+                if (dealerTotal > 21){
+                    //everyone lost
+                }
+                //else if dealer is still in
+                else{
+                    //dealer won
+                }
+            }
+
+            //if p1 lost
+            else if (p1Total > 21) {
+                //if dealer bust
+                if (dealerTotal > 21){
+                    //p2won
+                }
+                //else if dealer is still in the game
+                else {
+                    //p2 beat dealer
+                    if (p2Total > dealerTotal) {
+                        //p2won
+                    }
+                    //dealer beat p2
+                    else if (dealerTotal > p2Total){
+                        //dealer won
+                    }
+                    //dealer == p2
+                    else{
+                        //2 way tie
+                    }
+                }
+            }
+
+            //if p2 lost
+            else if (p2Total > 21) {
+                //if dealer bust
+                if (dealerTotal > 21) {
+                    //p1won
+                }
+                //else if dealer is still in the game
+                else {
+                    //p1 beat dealer
+                    if (p1Total > dealerTotal){
+                        //p1won
+                    }
+                    //dealer beat p1
+                    if (dealerTotal > p1Total){
+                        //dealer won
+                    }
+                    //dealer == p1
+                    else {
+                        //2 way tie
+                    }
+                }
+            }
+
+            //if both players are still in
+            else {
+                //dealer bust
+                if (dealerTotal > 21) {
+                    //p1 > p2
+                    if (p1Total > p2Total){
+                        //p1won
+                    }
+                    //p2 > p1
+                    else if (p2Total > p1Total){
+                        //p2won
+                    }
+                    //p1 == p2
+                    else {
+                        //2 way tie
+                    }
+                }
+                //dealer didnt bust, all 3 are still in the game
+                else {
+                    //if p1 beat p2 and dealer
+                    if (p1Total > p2Total && p1Total > dealerTotal) {
+                        //p1won
+                    }
+                    //if p2 beat p1 and dealer
+                    if (p2Total > p1Total && p2Total > dealerTotal){
+                        //p2won
+                    }
+                    //if dealer beat p1 and p2
+                    if (dealerTotal > p1Total && dealerTotal > p2Total){
+                        //dealer won
+                    }
+                    //if 3 way tie
+                    if (p1Total == p2Total && p1Total == dealerTotal){
+                        //3 way tie
+                    }
+                    //else other 2 way ties
+                    else{
+                        //2 way tie
+                    }
+                }
+            }
         }
-    }
+    }//end on press next
 
     //in done
     public void onPressHit() {
@@ -161,13 +486,35 @@ public class LocalMatch extends Activity {
                     }
                     //else if >21 and no ace
                     else {
-                        //Game Over, you lose
+                        //now its player 2's turn
+
+                        //change text
+                        next.setText("Next");
+
+                        //change button colors
+                        next.setBackgroundResource(R.color.active);
+                        hit.setBackgroundResource(R.color.item);
+                        stay.setBackgroundResource(R.color.item);
+
+                        //change state to next
+                        prgrmState = stateNext;
                     }
                 }//end if >21
 
                 //check if player == 21
                 else if (p1Total == 21){
-                    //Game Over, you won
+                    //now its player 2's turn
+
+                    //change text
+                    next.setText("Next");
+
+                    //change button colors
+                    next.setBackgroundResource(R.color.active);
+                    hit.setBackgroundResource(R.color.item);
+                    stay.setBackgroundResource(R.color.item);
+
+                    //change state to next
+                    prgrmState = stateNext;
                 }
             }
 
@@ -209,13 +556,35 @@ public class LocalMatch extends Activity {
                     }
                     //else if >21 and no ace
                     else {
-                        //Game Over, you lose
+                        //dealer's turn
+
+                        //change text
+                        next.setText("Next");
+
+                        //change button colors
+                        next.setBackgroundResource(R.color.active);
+                        hit.setBackgroundResource(R.color.item);
+                        stay.setBackgroundResource(R.color.item);
+
+                        //change state to next
+                        prgrmState = stateNext;
                     }
                 }//end if >21
 
                 //check if player == 21
                 else if (p2Total == 21){
-                    //Game Over, you won
+                    //dealers turn
+
+                    //change text
+                    next.setText("Next");
+
+                    //change button colors
+                    next.setBackgroundResource(R.color.active);
+                    hit.setBackgroundResource(R.color.item);
+                    stay.setBackgroundResource(R.color.item);
+
+                    //change state to next
+                    prgrmState = stateNext;
                 }
             }
         }
@@ -254,7 +623,7 @@ public class LocalMatch extends Activity {
 
             else if (prgrmState == stateP2){
 
-                info.setText("P1 chose stay");
+                info.setText("P2 chose stay");
 
                 //change text
                 next.setText("Next");
